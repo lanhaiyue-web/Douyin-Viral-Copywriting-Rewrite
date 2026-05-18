@@ -1,0 +1,5 @@
+streamlit>=1.32.0
+openai>=1.40.0
+lark-oapi>=1.4.0
+python-dotenv>=1.0.0
+playwright>=1.40.0
