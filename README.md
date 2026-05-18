@@ -30,6 +30,27 @@ python -m venv .venv
 
 （如果你不想用 venv 也可以 `pip install --user -r requirements.txt`，bat 会自动 fallback。）
 
+### 2.5 可选：安装 Claude Code / Codex CLI
+
+如果你只用本地网页 `start_app.bat`，这一步可以先跳过。
+
+如果你想在飞书机器人里点 **Claude Code 运行** / **Codex 运行**，或者想让本项目调用本地 coding agent，先装 Node.js 18+，然后在新的 PowerShell 里贴下面几行：
+
+```powershell
+# Claude Code
+npm install -g @anthropic-ai/claude-code
+claude --version
+
+# Codex CLI
+npm install -g @openai/codex
+codex --version
+codex login
+```
+
+首次运行 `claude` 或 `codex login` 会让你按提示登录自己的账号。真实账号凭证存在各自 CLI 的用户目录里，不会进这个项目，也不会上传 GitHub。
+
+如果安装后提示找不到 `claude` / `codex`，先关闭 PowerShell 重新打开；仍然不行，再在 `%APPDATA%\baokuan-rewrite\.env` 里把 `CLAUDE_CMD` / `CODEX_CMD` 写成你本机的绝对路径。
+
 ### 3. 填 API Key
 
 新建文件 `%APPDATA%\baokuan-rewrite\.env`（Windows）：
@@ -125,7 +146,7 @@ start_app.bat
 ## 模型说明
 
 - **评分**：默认用 DeepSeek（便宜、稳定、够用）
-- **原创 / 改写**：建议用 Claude Code 或 Codex（本地命令行 CLI），需要在项目 `.env` 里指定 `CLAUDE_CMD` / `CODEX_CMD`，或者保持默认（自动找 PATH 上的 `claude` / `codex`）
+- **原创 / 改写**：建议用 Claude Code 或 Codex（本地命令行 CLI）。默认会找 PATH 上的 `claude` / `codex`；如果找不到，就在 `%APPDATA%\baokuan-rewrite\.env` 里指定 `CLAUDE_CMD` / `CODEX_CMD`
 - DeepSeek 不适合写原创口播稿（生成偏书面化，不适合短视频），所以只用来打分
 
 ## 常见问题

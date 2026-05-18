@@ -18,7 +18,7 @@ if not exist "%APPDATA%\baokuan-rewrite\.env" (
     echo [错误] 凭证文件不存在: %APPDATA%\baokuan-rewrite\.env
     echo        飞书是可选功能。如果你要用：
     echo          1. 创建目录 %APPDATA%\baokuan-rewrite\
-    echo          2. 在里面新建 .env，按 .env.example 格式填入：
+    echo          2. 在里面新建 .env，填入：
     echo             FEISHU_APP_ID / FEISHU_APP_SECRET / DEEPSEEK_API_KEY
     echo          3. 详见 docs\飞书集成可选.md
     pause
